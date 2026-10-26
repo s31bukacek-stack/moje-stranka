@@ -3,222 +3,689 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Jakub Bukáček</title>
-<meta name="description" content="Jakub Bukáček - vedu webové projekty od poptávky po spuštění a dělám uživatelský výzkum.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23e4e8ea'/%3E%3Crect x='4' y='20' width='24' height='4' fill='%23b4321a'/%3E%3C/svg%3E">
+<title>Jakub Bukáček - Senior UX designer</title>
+<meta name="description" content="Více než 20 let navrhuji e-shopy, které prodávají. UX analýzy, výzkum, wireframy, prototypy a UI design se zaměřením na konverzní poměr.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23ffffff'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23ff5a00'/%3E%3C/svg%3E">
+<link rel="preload" href="assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-  /* Space Grotesk 700, OFL 1.1. Soubory ze subsetů latin a latin-ext -
-     latin-ext je pro češtinu nutný (ě š č ř ž ů ď ť ň). */
+  /* Inter Variable, SIL OFL 1.1. Dva subsety - latin-ext je pro češtinu nutný. */
   @font-face {
-    font-family: "Space Grotesk";
+    font-family: "Inter Variable";
     font-style: normal;
-    font-weight: 700;
     font-display: swap;
-    src: url("assets/fonts/space-grotesk-700-latin.woff2") format("woff2");
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    font-weight: 100 900;
+    src: url("assets/fonts/inter-latin-wght-normal.woff2") format("woff2-variations");
+    unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
   }
   @font-face {
-    font-family: "Space Grotesk";
+    font-family: "Inter Variable";
     font-style: normal;
-    font-weight: 700;
     font-display: swap;
-    src: url("assets/fonts/space-grotesk-700-latin-ext.woff2") format("woff2");
-    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    font-weight: 100 900;
+    src: url("assets/fonts/inter-latin-ext-wght-normal.woff2") format("woff2-variations");
+    unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
   }
 
   :root {
-    --paper: #e4e8ea;
-    --ink: #14171a;
-    --ink-soft: #4b545a;
-    --accent: #b4321a;
-    --rule: rgba(20, 23, 26, 0.18);
-
-    --display: "Space Grotesk", system-ui, sans-serif;
-    --text: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    /* Paleta vytažená z portfolia: bílá, tmavá šeď, oranžová a její tóny. */
+    --paper: #ffffff;
+    --ink: #2a2a2d;
+    --muted: #6e6e73;
+    --accent: #ff5a00;        /* grafika: tečky, linky, diagram, ikony */
+    --accent-text: #c43e00;   /* totéž oranžové, ale v kontrastu pro text */
+    --accent-dark: #a83300;
+    --tint: #fff1e8;
+    --tint-strong: #ffe3d2;
+    --rule: #e6e6e8;
 
     --ease: cubic-bezier(0.16, 1, 0.3, 1);
-
     color-scheme: light;
-    scrollbar-color: var(--ink-soft) var(--paper);
   }
 
   * { box-sizing: border-box; }
 
-  ::selection { background: var(--accent); color: var(--paper); }
+  ::selection { background: var(--accent); color: #fff; }
 
-  html { -webkit-text-size-adjust: 100%; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
   body {
     margin: 0;
     background: var(--paper);
     color: var(--ink);
-    font-family: var(--text);
-    font-size: 17px;
-    line-height: 1.65;
+    font-family: "Inter Variable", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
     caret-color: var(--accent);
     -webkit-font-smoothing: antialiased;
   }
 
-  .page {
-    max-width: 68rem;
+  .wrap {
+    max-width: 1120px;
     margin: 0 auto;
-    padding: clamp(40px, 9vw, 104px) clamp(20px, 5vw, 64px) 80px;
+    padding-inline: clamp(20px, 5vw, 56px);
   }
 
-  /* Hlavička ------------------------------------------------------------ */
+  section { padding-block: 64px; }
 
-  .masthead {
-    border-bottom: 3px solid var(--accent);
-    padding-bottom: clamp(28px, 4vw, 44px);
+  @media (min-width: 760px) { section { padding-block: 96px; } }
+  section + section { border-top: 1px solid var(--rule); }
+
+  h1, h2, h3 { margin: 0; letter-spacing: -0.02em; text-wrap: balance; }
+
+  h2 {
+    font-size: clamp(1.6rem, 3.6vw, 2.25rem);
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  h3 { font-size: 1rem; font-weight: 600; letter-spacing: -0.01em; }
+
+  p { margin: 0; text-wrap: pretty; }
+
+  /* Štítek sekce: oranžová tečka a popisek - převzato z portfolia. ------- */
+
+  .label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 12px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--accent-text);
+  }
+
+  .label::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex: none;
+  }
+
+  .lead { color: var(--muted); max-width: 62ch; }
+
+  /* Hero ---------------------------------------------------------------- */
+
+  .hero {
+    display: grid;
+    gap: clamp(32px, 5vw, 64px);
+    align-items: center;
+    padding-block-start: clamp(48px, 7vw, 88px);
+  }
+
+  @media (min-width: 860px) {
+    .hero { grid-template-columns: 1fr minmax(280px, 380px); }
   }
 
   h1 {
-    font-family: var(--display);
+    font-size: clamp(2.25rem, 5.4vw, 3.5rem);
     font-weight: 700;
-    font-size: clamp(2.75rem, 11vw, 6rem);
-    line-height: 0.93;
-    letter-spacing: -0.035em;
-    text-wrap: balance;
-    margin: 0;
+    line-height: 1.05;
   }
 
-  .intro {
-    max-width: 46ch;
-    margin: clamp(24px, 3vw, 36px) 0 0;
-    font-size: clamp(1.05rem, 1.6vw, 1.25rem);
-    color: var(--ink-soft);
-    text-wrap: pretty;
-  }
-
-  /* Seznam -------------------------------------------------------------- */
-
-  h2 {
-    font-family: var(--display);
-    font-weight: 700;
+  .role {
+    margin: 14px 0 0;
     font-size: 1rem;
-    letter-spacing: 0.02em;
-    margin: clamp(64px, 9vw, 112px) 0 clamp(20px, 2vw, 28px);
+    font-weight: 600;
+    color: var(--accent-text);
   }
 
-  .entries { margin: 0; }
+  .role::after {
+    content: "";
+    display: block;
+    width: 56px;
+    height: 3px;
+    margin-top: 14px;
+    background: var(--accent);
+  }
 
-  .entry {
+  .hero .lead { margin-top: 24px; font-size: 1.0625rem; }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 32px;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 22px;
+    border-radius: 6px;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 150ms var(--ease), border-color 150ms var(--ease), color 150ms var(--ease);
+  }
+
+  .btn-primary { background: var(--accent-text); color: #fff; }
+  .btn-primary:hover { background: var(--accent-dark); }
+
+  .btn-ghost { border: 1px solid var(--rule); color: var(--ink); }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent-text); }
+
+  .portrait {
+    width: min(100%, 380px);
+    aspect-ratio: 1;
+    height: auto;
+    border-radius: 50%;
+    object-fit: cover;
+    justify-self: center;
+  }
+
+  /* Služby -------------------------------------------------------------- */
+
+  .spec {
+    margin: 20px 0 0;
+    font-size: 0.9375rem;
+    color: var(--muted);
+  }
+
+  .spec b { color: var(--accent-text); font-weight: 600; }
+
+  .services {
     display: grid;
+    gap: clamp(28px, 4vw, 44px) 40px;
+    margin-top: clamp(36px, 5vw, 56px);
     grid-template-columns: 1fr;
-    gap: 4px 48px;
-    padding: 26px 0;
-    border-top: 1px solid var(--rule);
   }
 
-  .entry:last-child { border-bottom: 1px solid var(--rule); }
+  @media (min-width: 620px) { .services { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 940px) { .services { grid-template-columns: repeat(3, 1fr); } }
 
-  .entry dt {
-    font-family: var(--display);
+  .service .tile {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: var(--tint);
+    margin-bottom: 16px;
+  }
+
+  .service .tile svg { width: 22px; height: 22px; color: var(--accent-text); }
+
+  .service p { margin-top: 8px; font-size: 0.9375rem; color: var(--muted); }
+
+  /* Proces -------------------------------------------------------------- */
+
+  .diamond {
+    width: 100%;
+    height: auto;
+    margin: clamp(28px, 4vw, 44px) 0 clamp(24px, 3vw, 36px);
+    display: none;
+  }
+
+  @media (min-width: 820px) { .diamond { display: block; } }
+
+  .diamond .stage { font-size: 15px; font-weight: 600; fill: var(--ink); }
+  .diamond .cap { font-size: 14px; font-weight: 600; fill: var(--accent-text); }
+  .diamond .note { font-size: 12.5px; fill: var(--muted); }
+
+  .phases {
+    list-style: none;
+    margin: 32px 0;
+    padding: 0;
+    display: grid;
+    gap: 2px;
+  }
+
+  @media (min-width: 820px) { .phases { display: none; } }
+
+  .phases li {
+    display: grid;
+    grid-template-columns: 14px 1fr;
+    gap: 12px;
+    align-items: baseline;
+    padding: 12px 14px;
+    background: var(--tint);
+    font-weight: 600;
+  }
+
+  .phases li:first-child { border-radius: 8px 8px 0 0; }
+  .phases li:last-child { border-radius: 0 0 8px 8px; }
+
+  .phases li::before {
+    content: "";
+    width: 9px;
+    height: 9px;
+    background: var(--accent);
+    transform: rotate(45deg);
+  }
+
+  .phases span { display: block; font-weight: 400; font-size: 0.875rem; color: var(--muted); }
+
+  .pair {
+    display: grid;
+    gap: clamp(24px, 4vw, 48px);
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 760px) { .pair { grid-template-columns: repeat(2, 1fr); } }
+
+  .pair p { margin-top: 8px; font-size: 0.9375rem; color: var(--muted); }
+
+  /* Spolupráce ---------------------------------------------------------- */
+
+  .quote {
+    margin: clamp(24px, 3vw, 36px) 0 clamp(36px, 5vw, 56px);
+    padding-left: 20px;
+    border-left: 3px solid var(--accent);
+    max-width: 72ch;
+    font-size: 1.0625rem;
+  }
+
+  .ticks { list-style: none; margin: 16px 0 0; padding: 0; display: grid; gap: 12px; }
+
+  .ticks li {
+    display: grid;
+    grid-template-columns: 7px 1fr;
+    gap: 14px;
+    align-items: baseline;
+    font-size: 0.9375rem;
+    color: var(--muted);
+  }
+
+  .ticks li::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  .steps { list-style: none; margin: 16px 0 0; padding: 0; display: grid; gap: 16px; counter-reset: s; }
+
+  .steps li {
+    display: grid;
+    grid-template-columns: 24px 1fr;
+    gap: 14px;
+    font-size: 0.9375rem;
+    color: var(--muted);
+    counter-increment: s;
+  }
+
+  .steps li::before {
+    content: counter(s) ".";
     font-weight: 700;
-    font-size: clamp(1.25rem, 2.6vw, 1.6rem);
-    line-height: 1.2;
-    letter-spacing: -0.02em;
+    color: var(--accent-text);
   }
 
-  .entry dd {
-    margin: 0;
-    max-width: 52ch;
-    color: var(--ink-soft);
-    text-wrap: pretty;
+  /* Reference ----------------------------------------------------------- */
+
+  .quotes {
+    display: grid;
+    gap: clamp(28px, 4vw, 44px) 48px;
+    margin-top: clamp(32px, 4vw, 48px);
+    grid-template-columns: 1fr;
   }
 
-  @media (min-width: 720px) {
-    .entry {
-      grid-template-columns: minmax(0, 17rem) 1fr;
-      padding: 32px 0;
-    }
+  @media (min-width: 760px) { .quotes { grid-template-columns: repeat(2, 1fr); } }
+
+  .quotes figcaption { font-size: 0.9375rem; color: var(--muted); }
+  .quotes .who { display: block; font-weight: 600; color: var(--ink); font-size: 1rem; }
+  .quotes blockquote { margin: 12px 0 0; font-size: 0.9375rem; color: var(--muted); }
+
+  .stars { display: block; margin-top: 6px; color: var(--accent); letter-spacing: 2px; font-size: 0.8125rem; }
+
+  /* Klienti ------------------------------------------------------------- */
+
+  .clients {
+    display: grid;
+    gap: 2px;
+    margin-top: clamp(32px, 4vw, 48px);
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  /* Odkazy --------------------------------------------------------------- */
+  @media (min-width: 760px) { .clients { grid-template-columns: repeat(3, 1fr); } }
 
-  a {
-    color: var(--ink);
+  .clients li {
+    list-style: none;
+    display: grid;
+    place-items: center;
+    padding: 28px 16px;
+    background: var(--tint);
+    font-weight: 600;
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  /* Kontakt ------------------------------------------------------------- */
+
+  .contact-grid {
+    display: grid;
+    gap: 28px 64px;
+    margin-top: clamp(28px, 4vw, 40px);
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 620px) { .contact-grid { grid-template-columns: repeat(2, 1fr); max-width: 760px; } }
+
+  .contact-grid dt {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--accent-text);
+    margin-bottom: 6px;
+  }
+
+  .contact-grid dd { margin: 0; font-size: clamp(1.0625rem, 2.4vw, 1.375rem); font-weight: 600; }
+
+  footer { padding-block: 32px 48px; font-size: 0.8125rem; color: var(--muted); }
+
+  /* Odkazy a focus ------------------------------------------------------ */
+
+  a { color: var(--ink); }
+
+  .contact-grid a,
+  .inline-link {
     text-decoration: underline;
     text-decoration-color: var(--accent);
     text-decoration-thickness: 2px;
     text-underline-offset: 4px;
-    transition: color 160ms var(--ease), text-decoration-thickness 160ms var(--ease);
+    transition: color 150ms var(--ease);
   }
 
-  a:hover {
-    color: var(--accent);
-    text-decoration-thickness: 3px;
-  }
+  .contact-grid a:hover,
+  .inline-link:hover { color: var(--accent-text); }
 
-  :focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 3px;
-    border-radius: 2px;
-  }
+  :focus-visible { outline: 2px solid var(--accent-text); outline-offset: 3px; border-radius: 3px; }
 
-  /* Jeden pohyb při načtení: obsah se zvedne a doostří. ------------------ */
+  /* Jeden pohyb: úvodní blok se zvedne. --------------------------------- */
 
   @keyframes rise {
-    from { opacity: 0; transform: translateY(16px); filter: blur(8px); }
-    to   { opacity: 1; transform: none; filter: none; }
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: none; }
   }
 
-  .masthead > *,
-  h2,
-  .entry {
-    animation: rise 900ms var(--ease) backwards;
-  }
-
-  h1 { animation-delay: 60ms; }
-  .intro { animation-delay: 160ms; }
-  h2 { animation-delay: 240ms; }
-  .entry:nth-of-type(1) { animation-delay: 300ms; }
-  .entry:nth-of-type(2) { animation-delay: 360ms; }
-  .entry:nth-of-type(3) { animation-delay: 420ms; }
+  .hero > * { animation: rise 760ms var(--ease) backwards; }
+  .hero > *:nth-child(2) { animation-delay: 110ms; }
 
   @media (prefers-reduced-motion: reduce) {
-    .masthead > *, h2, .entry { animation: none; }
-    a { transition: none; }
+    .hero > * { animation: none; }
   }
 </style>
 </head>
 <body>
 
-<div class="page">
+<svg width="0" height="0" aria-hidden="true" style="position:absolute">
+  <symbol id="i-analyza" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/><path d="M8 10.5h5M10.5 8v5"/>
+  </symbol>
+  <symbol id="i-vyzkum" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="9" cy="8" r="3.5"/><path d="M3 20c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5"/><path d="M16.5 5.2a3 3 0 0 1 0 5.6"/><path d="M18 14.8c1.9.8 3 2.6 3 5.2"/>
+  </symbol>
+  <symbol id="i-struktura" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16M9 11h12"/>
+  </symbol>
+  <symbol id="i-prototyp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M7 4.5 17.5 11l-4.6 1.4L11.5 17z"/><path d="M4 9.5H2M9.5 4V2M4.8 5.3 3.4 3.9"/>
+  </symbol>
+  <symbol id="i-ui" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="4" width="18" height="13" rx="2"/><path d="M3 8.5h18M8 21h8M12 17v4"/>
+  </symbol>
+  <symbol id="i-grafika" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.75"/><path d="m4 18 5-5 4 4 3-2.5 4 3.5"/>
+  </symbol>
+</svg>
 
-  <header class="masthead">
-    <h1>Jakub Bukáček</h1>
-    <p class="intro">
-      Vedu webové projekty od první poptávky po spuštění a dělám uživatelský
-      výzkum - moderovaná testování, analýzu a reporty. Kód nepíšu rukou,
-      stavím ho s Claude Code.
+<main>
+
+  <!-- Hero ------------------------------------------------------------ -->
+  <section class="wrap hero" id="uvod">
+    <div>
+      <h1>Jakub Bukáček</h1>
+      <p class="role">Senior UX designer</p>
+      <p class="lead">
+        Více než 20 let navrhuji e-shopy, které prodávají. Specializuji se na
+        User Experience a optimalizaci konverzního poměru.
+      </p>
+      <div class="actions">
+        <a class="btn btn-primary" href="mailto:jakub.bukacek@vyzkumak.cz">Napište mi</a>
+        <a class="btn btn-ghost" href="tel:+420604565920">+420 604 565 920</a>
+      </div>
+    </div>
+
+    <picture>
+      <source type="image/webp" srcset="assets/img/portret-640.webp 640w, assets/img/portret-1280.webp 1280w" sizes="(min-width: 860px) 380px, 100vw">
+      <img class="portrait" src="assets/img/portret-640.jpg"
+           srcset="assets/img/portret-640.jpg 640w, assets/img/portret-1280.jpg 1280w"
+           sizes="(min-width: 860px) 380px, 100vw"
+           width="640" height="640" fetchpriority="high"
+           alt="Portrét Jakuba Bukáčka">
+    </picture>
+  </section>
+
+  <!-- Služby ---------------------------------------------------------- -->
+  <section class="wrap" id="sluzby">
+    <p class="label">Co umím a nabízím</p>
+    <h2>S čím se na mě obrátit</h2>
+    <p class="spec"><b>Specializace:</b> e-commerce · konverze · redesign e-shopů</p>
+
+    <div class="services">
+      <article class="service">
+        <span class="tile"><svg aria-hidden="true"><use href="#i-analyza"/></svg></span>
+        <h3>UX a heuristická analýza</h3>
+        <p>Projdu e-shop a najdu konkrétní místa, kde ztrácíte zákazníky, s prioritizací podle dopadu.</p>
+      </article>
+
+      <article class="service">
+        <span class="tile"><svg aria-hidden="true"><use href="#i-vyzkum"/></svg></span>
+        <h3>Výzkum</h3>
+        <p>Hloubkové rozhovory a dotazníky, které ukáží, co zákazníci potřebují a co je od nákupu odrazuje.</p>
+      </article>
+
+      <article class="service">
+        <span class="tile"><svg aria-hidden="true"><use href="#i-struktura"/></svg></span>
+        <h3>Informační architektura a wireframy</h3>
+        <p>Navrhnu strukturu webu a rozložení stránek dříve, než se řeší grafika.</p>
+      </article>
+
+      <article class="service">
+        <span class="tile"><svg aria-hidden="true"><use href="#i-prototyp"/></svg></span>
+        <h3>Interaktivní prototypy</h3>
+        <p>Klikací návrh k testování ještě před vývojem a k čistému předání vývojářům.</p>
+      </article>
+
+      <article class="service">
+        <span class="tile"><svg aria-hidden="true"><use href="#i-ui"/></svg></span>
+        <h3>UI design webů a e-shopů</h3>
+        <p>Kompletní vizuální návrh ve Figmě, který drží konzistenci s vaší značkou.</p>
+      </article>
+
+      <article class="service">
+        <span class="tile"><svg aria-hidden="true"><use href="#i-grafika"/></svg></span>
+        <h3>Grafika pro web, newslettery a bannery</h3>
+        <p>Doplňkové vizuály, ať značka drží pohromadě napříč kanály.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Proces ---------------------------------------------------------- -->
+  <section class="wrap" id="proces">
+    <p class="label">Jak postupuji</p>
+    <h2>Návrhový proces: Double Diamond</h2>
+
+    <svg class="diamond" viewBox="0 0 760 215" role="img" aria-labelledby="dd-nazev">
+      <title id="dd-nazev">Dvojitý diamant: objevování a definování vedou ke správnému problému, vývoj a dodání ke správnému řešení.</title>
+      <text class="cap" x="200" y="24" text-anchor="middle">Správný problém</text>
+      <text class="cap" x="560" y="24" text-anchor="middle">Správné řešení</text>
+      <polygon points="30,120 200,56 370,120 200,184" fill="#ffe3d2" stroke="#ff5a00" stroke-width="1.5"/>
+      <polygon points="390,120 560,56 730,120 560,184" fill="#ffe3d2" stroke="#ff5a00" stroke-width="1.5"/>
+      <text class="stage" x="130" y="125" text-anchor="middle">Objevování</text>
+      <text class="stage" x="272" y="125" text-anchor="middle">Definování</text>
+      <text class="stage" x="490" y="125" text-anchor="middle">Vývoj</text>
+      <text class="stage" x="632" y="125" text-anchor="middle">Dodání</text>
+      <text class="note" x="130" y="208" text-anchor="middle">rozšiřuji možnosti</text>
+      <text class="note" x="272" y="208" text-anchor="middle">zužuji na zadání</text>
+      <text class="note" x="490" y="208" text-anchor="middle">zkouším řešení</text>
+      <text class="note" x="632" y="208" text-anchor="middle">dotahuji k dodání</text>
+    </svg>
+
+    <ol class="phases">
+      <li>Objevování <span>rozšiřuji možnosti</span></li>
+      <li>Definování <span>zužuji na zadání</span></li>
+      <li>Vývoj <span>zkouším řešení</span></li>
+      <li>Dodání <span>dotahuji k dodání</span></li>
+    </ol>
+
+    <div class="pair">
+      <div>
+        <h3>Nejdříve správný problém</h3>
+        <p>
+          Nezačínám návrhem. Poznám zákazníky a jejich chování, projdu data
+          i analýzu - a teprve poté přesně definuji, co se má řešit. Vyhneme se
+          tak skvěle vyřešenému špatnému problému.
+        </p>
+      </div>
+      <div>
+        <h3>Poté správné řešení</h3>
+        <p>
+          S jasným zadáním hledám řešení v konceptech a variantách, které zužuji
+          a testuji. Výsledkem je ověřený návrh připravený k předání vývojářům -
+          nikoli dojem, ale něco, co reálně funguje.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Spolupráce ------------------------------------------------------ -->
+  <section class="wrap" id="spoluprace">
+    <p class="label">Spolupráce</p>
+    <h2>Vaše zadání a můj postup</h2>
+
+    <p class="quote">
+      Čeho má nový web dosáhnout? Víc objednávek a poptávek, víc vracejících se
+      zákazníků, vyšší průměrné hodnoty objednávky nebo nižší zátěže na podporu?
+      Hned na začátku si cíl ujasníme a design pak stavím tak, aby k němu vedl.
     </p>
-  </header>
 
-  <main>
-    <h2>Tři věci, které mě baví</h2>
-
-    <!-- DOPLŇ: tyhle tři položky jsou pracovní návrh podle toho, co o tobě vím
-         z projektů. Přepiš je za věci, které tě baví doopravdy. -->
-    <dl class="entries">
-      <div class="entry">
-        <dt>Uživatelský výzkum</dt>
-        <dd>Dívat se lidem přes rameno a zjišťovat, proč klikli jinam, než jsme čekali.</dd>
+    <div class="pair">
+      <div>
+        <h3>Co řešíte</h3>
+        <ul class="ticks">
+          <li>Refresh grafiky do modernější, jemnější a ženské podoby</li>
+          <li>Promítnutí nového grafického manuálu do webdesignu</li>
+          <li>Dotažení UX a konverzních cest a nový věrnostní program provázaný přes celý e-shop</li>
+        </ul>
       </div>
-
-      <div class="entry">
-        <dt>Stavění webů s AI</dt>
-        <dd>Posunout nápad do funkčního webu za jeden večer, bez psaní kódu po písmenkách.</dd>
+      <div>
+        <h3>Jak obvykle postupuji u redesignu e-shopu?</h3>
+        <p style="margin-top:8px;font-size:0.9375rem;color:var(--muted)">
+          U redesignu e-shopu začínám analýzou současného stavu. Ta určí, kde
+          jsou slabá místa a co má nový web přednostně vyřešit, aby se problémy
+          ze stávajícího e-shopu nepřenesly i do nové podoby.
+        </p>
+        <ol class="steps">
+          <li>Úvodní hovor a upřesnění zadání, na jehož základě připravím prvotní nabídku.</li>
+          <li>UX analýza aktuálního stavu. Procházím navigaci, informační architekturu, srozumitelnost, důvěryhodnost, kartu produktu, košík a objednávkový proces očima zákazníka i dat.</li>
+          <li>Strukturovaný výstup o dvou úrovních: okamžité změny s rychlým dopadem na konverze a kompletní prioritizovaný seznam nálezů. Výstup slouží jako zadání pro nový e-shop.</li>
+        </ol>
       </div>
+    </div>
+  </section>
 
-      <div class="entry">
-        <dt>Video a motion</dt>
-        <dd>Krátká videa, kde každý střih něco říká a nic tam není navíc.</dd>
+  <!-- Reference ------------------------------------------------------- -->
+  <section class="wrap" id="reference">
+    <p class="label">Reference</p>
+    <h2>Co říkají klienti</h2>
+
+    <div class="quotes">
+      <figure style="margin:0">
+        <figcaption>
+          <span class="who">Peter Lorinčík</span>
+          Cool-mania.eu · 7. 11. 2023
+          <span class="stars" aria-label="Hodnocení 5 z 5">★★★★★</span>
+        </figcaption>
+        <blockquote>
+          Absolútne precízne vykonaná analýza webu, do detailu rozpracovaný
+          report s odporúčaniami a úpravami na zlepšenie. Môžeme jednoznačne
+          doporučiť služby VYZKUMAK.cz - od ľudského prístupu až po odbornosť.
+        </blockquote>
+      </figure>
+
+      <figure style="margin:0">
+        <figcaption>
+          <span class="who">Lukáš Rada</span>
+          iMi.cz · 30. 7. 2024
+          <span class="stars" aria-label="Hodnocení 5 z 5">★★★★★</span>
+        </figcaption>
+        <blockquote>
+          Spolupráci jmenovitě s p. Bukáčkem mohu rozhodně doporučit. Pomáhá nám
+          vylepšovat náš web iMi.cz, když často najde vhodné řešení i pro leckdy
+          složité procesy, tak aby je všichni pochopili. Oceňuji zejména pečlivou
+          přípravu, rychlou komunikaci a vysokou kvalitu navržených výstupů.
+        </blockquote>
+      </figure>
+
+      <figure style="margin:0">
+        <figcaption>
+          <span class="who">Ondrej Knava</span>
+          solight.cz · 23. 10. 2024
+          <span class="stars" aria-label="Hodnocení 5 z 5">★★★★★</span>
+        </figcaption>
+        <blockquote>
+          Doporučuji tuto firmu, která nám zpracovala UX analýzu. Pojmenovala
+          problémy, kterými web trpí, a navrhla vylepšené řešení. Oceňuji kvalitu
+          zpracování, komunikaci i závěrečnou prezentaci všech bodů z analýzy.
+        </blockquote>
+      </figure>
+
+      <figure style="margin:0">
+        <figcaption>
+          <span class="who">David Buchta</span>
+          Primulus Group, s.r.o. · 16. 10. 2024
+          <span class="stars" aria-label="Hodnocení 5 z 5">★★★★★</span>
+        </figcaption>
+        <blockquote>
+          Skvělá spolupráce a velmi kvalitní UX výzkum, který jsme dokázali ihned
+          praktikovat do reálných změn na našich webech.
+        </blockquote>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Klienti --------------------------------------------------------- -->
+  <section class="wrap" id="klienti">
+    <p class="label">Klienti</p>
+    <h2>Vybrané značky, kterým jsem pomohl</h2>
+
+    <ul class="clients">
+      <li>Yves Rocher</li>
+      <li>Xzone</li>
+      <li>Cool Mania</li>
+      <li>Skleněný shop</li>
+      <li>Sledování TV</li>
+      <li>Nutrend</li>
+    </ul>
+  </section>
+
+  <!-- Kontakt --------------------------------------------------------- -->
+  <section class="wrap" id="kontakt">
+    <p class="label">Kontakt</p>
+    <h2>Povězte mi, co řešíte</h2>
+
+    <dl class="contact-grid">
+      <div>
+        <dt>E-mail</dt>
+        <dd><a href="mailto:jakub.bukacek@vyzkumak.cz">jakub.bukacek@vyzkumak.cz</a></dd>
+      </div>
+      <div>
+        <dt>Telefon</dt>
+        <dd><a href="tel:+420604565920">+420 604 565 920</a></dd>
       </div>
     </dl>
-  </main>
+  </section>
 
-</div>
+</main>
+
+<footer class="wrap">
+  <p>© 2026 Jakub Bukáček</p>
+</footer>
 
 </body>
 </html>
