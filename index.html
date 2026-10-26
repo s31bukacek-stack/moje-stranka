@@ -134,15 +134,7 @@
     }
   }
 
-  /* Patička ------------------------------------------------------------- */
-
-  footer {
-    margin-top: clamp(56px, 7vw, 88px);
-    font-size: 0.95rem;
-    color: var(--ink-soft);
-  }
-
-  footer p { margin: 0; }
+  /* Odkazy --------------------------------------------------------------- */
 
   a {
     color: var(--ink);
@@ -173,8 +165,7 @@
 
   .masthead > *,
   h2,
-  .entry,
-  footer {
+  .entry {
     animation: rise 900ms var(--ease) backwards;
   }
 
@@ -184,10 +175,9 @@
   .entry:nth-of-type(1) { animation-delay: 300ms; }
   .entry:nth-of-type(2) { animation-delay: 360ms; }
   .entry:nth-of-type(3) { animation-delay: 420ms; }
-  footer { animation-delay: 500ms; }
 
   @media (prefers-reduced-motion: reduce) {
-    .masthead > *, h2, .entry, footer { animation: none; }
+    .masthead > *, h2, .entry { animation: none; }
     a { transition: none; }
   }
 </style>
@@ -227,13 +217,6 @@
       </div>
     </dl>
   </main>
-
-  <footer>
-    <p>
-      Cvičná stránka pro kurz vývoje s Claude Code.
-      Kód je na <a href="https://github.com/s31bukacek-stack">GitHubu</a>.
-    </p>
-  </footer>
 
 </div>
 
