@@ -1,0 +1,5 @@
+# macOS
+.DS_Store
+
+# Lokální konfigurace náhledu, na GitHub nepatří.
+.claude/

@@ -4,146 +4,235 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Jakub Bukáček</title>
-<meta name="description" content="Osobní stránka Jakuba Bukáčka - digitální agentura, UX výzkum, weby.">
+<meta name="description" content="Jakub Bukáček - vedu webové projekty od poptávky po spuštění a dělám uživatelský výzkum.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23e4e8ea'/%3E%3Crect x='4' y='20' width='24' height='4' fill='%23b4321a'/%3E%3C/svg%3E">
 <style>
+  /* Space Grotesk 700, OFL 1.1. Soubory ze subsetů latin a latin-ext -
+     latin-ext je pro češtinu nutný (ě š č ř ž ů ď ť ň). */
+  @font-face {
+    font-family: "Space Grotesk";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("assets/fonts/space-grotesk-700-latin.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  @font-face {
+    font-family: "Space Grotesk";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("assets/fonts/space-grotesk-700-latin-ext.woff2") format("woff2");
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  }
+
   :root {
-    --bg: #101014;
-    --bg-card: #18181d;
-    --fg: #f4f4f6;
-    --fg-muted: #9a9aa6;
-    --accent: #7dd3a0;
-    --border: #26262e;
-    --radius: 16px;
-    --space: 24px;
+    --paper: #e4e8ea;
+    --ink: #14171a;
+    --ink-soft: #4b545a;
+    --accent: #b4321a;
+    --rule: rgba(20, 23, 26, 0.18);
+
+    --display: "Space Grotesk", system-ui, sans-serif;
+    --text: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+    color-scheme: light;
+    scrollbar-color: var(--ink-soft) var(--paper);
   }
 
   * { box-sizing: border-box; }
 
+  ::selection { background: var(--accent); color: var(--paper); }
+
+  html { -webkit-text-size-adjust: 100%; }
+
   body {
     margin: 0;
-    background: var(--bg);
-    color: var(--fg);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-    line-height: 1.6;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--text);
+    font-size: 17px;
+    line-height: 1.65;
+    caret-color: var(--accent);
     -webkit-font-smoothing: antialiased;
   }
 
-  .wrap {
-    max-width: 760px;
+  .page {
+    max-width: 68rem;
     margin: 0 auto;
-    padding: 72px 20px 96px;
+    padding: clamp(40px, 9vw, 104px) clamp(20px, 5vw, 64px) 80px;
   }
 
-  header {
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 40px;
-    margin-bottom: 48px;
+  /* Hlavička ------------------------------------------------------------ */
+
+  .masthead {
+    border-bottom: 3px solid var(--accent);
+    padding-bottom: clamp(28px, 4vw, 44px);
   }
 
   h1 {
-    font-size: clamp(2.2rem, 7vw, 3.4rem);
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-    margin: 0 0 16px;
-  }
-
-  .role {
-    color: var(--accent);
-    font-size: 1rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin: 0 0 24px;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(2.75rem, 11vw, 6rem);
+    line-height: 0.93;
+    letter-spacing: -0.035em;
+    text-wrap: balance;
+    margin: 0;
   }
 
   .intro {
-    color: var(--fg-muted);
-    font-size: 1.1rem;
-    margin: 0;
-    max-width: 56ch;
+    max-width: 46ch;
+    margin: clamp(24px, 3vw, 36px) 0 0;
+    font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+    color: var(--ink-soft);
+    text-wrap: pretty;
   }
+
+  /* Seznam -------------------------------------------------------------- */
 
   h2 {
-    font-size: 1.3rem;
-    letter-spacing: -0.01em;
-    margin: 0 0 var(--space);
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.02em;
+    margin: clamp(64px, 9vw, 112px) 0 clamp(20px, 2vw, 28px);
   }
 
-  .cards {
+  .entries { margin: 0; }
+
+  .entry {
     display: grid;
-    gap: 16px;
     grid-template-columns: 1fr;
+    gap: 4px 48px;
+    padding: 26px 0;
+    border-top: 1px solid var(--rule);
   }
 
-  @media (min-width: 640px) {
-    .cards { grid-template-columns: repeat(3, 1fr); }
+  .entry:last-child { border-bottom: 1px solid var(--rule); }
+
+  .entry dt {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(1.25rem, 2.6vw, 1.6rem);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
   }
 
-  .card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: var(--space);
-  }
-
-  .card h3 {
-    font-size: 1.05rem;
-    margin: 0 0 8px;
-  }
-
-  .card p {
-    color: var(--fg-muted);
-    font-size: 0.95rem;
+  .entry dd {
     margin: 0;
+    max-width: 52ch;
+    color: var(--ink-soft);
+    text-wrap: pretty;
   }
+
+  @media (min-width: 720px) {
+    .entry {
+      grid-template-columns: minmax(0, 17rem) 1fr;
+      padding: 32px 0;
+    }
+  }
+
+  /* Patička ------------------------------------------------------------- */
 
   footer {
-    margin-top: 64px;
-    padding-top: 24px;
-    border-top: 1px solid var(--border);
-    color: var(--fg-muted);
-    font-size: 0.9rem;
+    margin-top: clamp(56px, 7vw, 88px);
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+  }
+
+  footer p { margin: 0; }
+
+  a {
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+    transition: color 160ms var(--ease), text-decoration-thickness 160ms var(--ease);
+  }
+
+  a:hover {
+    color: var(--accent);
+    text-decoration-thickness: 3px;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Jeden pohyb při načtení: obsah se zvedne a doostří. ------------------ */
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(16px); filter: blur(8px); }
+    to   { opacity: 1; transform: none; filter: none; }
+  }
+
+  .masthead > *,
+  h2,
+  .entry,
+  footer {
+    animation: rise 900ms var(--ease) backwards;
+  }
+
+  h1 { animation-delay: 60ms; }
+  .intro { animation-delay: 160ms; }
+  h2 { animation-delay: 240ms; }
+  .entry:nth-of-type(1) { animation-delay: 300ms; }
+  .entry:nth-of-type(2) { animation-delay: 360ms; }
+  .entry:nth-of-type(3) { animation-delay: 420ms; }
+  footer { animation-delay: 500ms; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .masthead > *, h2, .entry, footer { animation: none; }
+    a { transition: none; }
   }
 </style>
 </head>
 <body>
 
-<div class="wrap">
+<div class="page">
 
-  <header>
-    <p class="role">Digitální agentura &middot; UX výzkum</p>
+  <header class="masthead">
     <h1>Jakub Bukáček</h1>
     <p class="intro">
-      Vedu webové projekty od první poptávky až po spuštění. Dělám uživatelský
-      výzkum - moderovaná testování, analýzu a reporty - a klientské nabídky.
-      Kód nepíšu rukou, stavím ho s Claude Code.
+      Vedu webové projekty od první poptávky po spuštění a dělám uživatelský
+      výzkum - moderovaná testování, analýzu a reporty. Kód nepíšu rukou,
+      stavím ho s Claude Code.
     </p>
   </header>
 
   <main>
     <h2>Tři věci, které mě baví</h2>
 
-    <!-- DOPLŇ: tyhle tři body jsou pracovní návrh podle toho, co o tobě vím
+    <!-- DOPLŇ: tyhle tři položky jsou pracovní návrh podle toho, co o tobě vím
          z projektů. Přepiš je za věci, které tě baví doopravdy. -->
-    <div class="cards">
-      <article class="card">
-        <h3>Uživatelský výzkum</h3>
-        <p>Dívat se lidem přes rameno a zjišťovat, proč klikli jinam, než jsme čekali.</p>
-      </article>
+    <dl class="entries">
+      <div class="entry">
+        <dt>Uživatelský výzkum</dt>
+        <dd>Dívat se lidem přes rameno a zjišťovat, proč klikli jinam, než jsme čekali.</dd>
+      </div>
 
-      <article class="card">
-        <h3>Stavění webů s AI</h3>
-        <p>Posunout nápad do funkčního webu za jeden večer, bez psaní kódu po písmenkách.</p>
-      </article>
+      <div class="entry">
+        <dt>Stavění webů s AI</dt>
+        <dd>Posunout nápad do funkčního webu za jeden večer, bez psaní kódu po písmenkách.</dd>
+      </div>
 
-      <article class="card">
-        <h3>Video a motion</h3>
-        <p>Krátká videa, kde každý střih něco říká a nic tam není navíc.</p>
-      </article>
-    </div>
+      <div class="entry">
+        <dt>Video a motion</dt>
+        <dd>Krátká videa, kde každý střih něco říká a nic tam není navíc.</dd>
+      </div>
+    </dl>
   </main>
 
   <footer>
-    <p>Cvičná stránka pro kurz vývoje s Claude Code.</p>
+    <p>
+      Cvičná stránka pro kurz vývoje s Claude Code.
+      Kód je na <a href="https://github.com/s31bukacek-stack">GitHubu</a>.
+    </p>
   </footer>
 
 </div>
