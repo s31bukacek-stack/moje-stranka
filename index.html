@@ -6,24 +6,25 @@
 <title>Jakub Bukáček - UX / UI designer</title>
 <meta name="description" content="Více než 20 let navrhuji e-shopy, které prodávají. UX analýzy, výzkum, wireframy, prototypy a UI design se zaměřením na konverzní poměr.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23ffffff'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23ff5a00'/%3E%3C/svg%3E">
-<link rel="preload" href="assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-  /* Inter Variable, SIL OFL 1.1. Dva subsety - latin-ext je pro češtinu nutný. */
+  /* Manrope, SIL OFL 1.1. Staženo z fonts.gstatic.com, hostuje se lokálně -
+     kvůli rychlosti i GDPR. Dva subsety, latin-ext je pro češtinu nutný. */
   @font-face {
-    font-family: "Inter Variable";
+    font-family: "Manrope";
     font-style: normal;
     font-display: swap;
-    font-weight: 100 900;
-    src: url("assets/fonts/inter-latin-wght-normal.woff2") format("woff2-variations");
-    unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+    font-weight: 200 800;
+    src: url("assets/fonts/manrope-latin-wght-normal.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
   }
   @font-face {
-    font-family: "Inter Variable";
+    font-family: "Manrope";
     font-style: normal;
     font-display: swap;
-    font-weight: 100 900;
-    src: url("assets/fonts/inter-latin-ext-wght-normal.woff2") format("woff2-variations");
-    unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+    font-weight: 200 800;
+    src: url("assets/fonts/manrope-latin-ext-wght-normal.woff2") format("woff2");
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
   }
 
   :root {
@@ -53,7 +54,7 @@
     margin: 0;
     background: var(--paper);
     color: var(--ink);
-    font-family: "Inter Variable", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    font-family: "Manrope", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
     font-size: 16px;
     line-height: 1.6;
     caret-color: var(--accent);
