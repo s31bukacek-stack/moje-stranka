@@ -32,9 +32,9 @@
     --paper: #ffffff;
     --ink: #2a2a2d;
     --muted: #6e6e73;
-    --accent: #ff4d1f;        /* grafika: tečky, linky, diagram, ikony */
-    --accent-text: #c73c18;   /* totéž oranžové, ale v kontrastu pro text (5,1:1) */
-    --accent-dark: #ad3415;
+    --accent: #ff4d1f;        /* značková oranžová, všude stejná */
+    --accent-text: var(--accent);
+    --accent-dark: #d63f12;   /* jen stav hover, aby byl rozdíl vidět */
     --tint: #fff1ed;
     --tint-strong: #ffd8ce;
     --rule: #e6e6e8;
@@ -82,13 +82,13 @@
   h1, h2, h3 { margin: 0; letter-spacing: -0.02em; text-wrap: balance; }
 
   h2 {
-    font-size: clamp(1.6rem, 3.6vw, 2.25rem);
+    font-size: clamp(2rem, 4.4vw, 3rem);
     font-weight: 600;
-    line-height: 1.2;
-    letter-spacing: -0.01em;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
   }
 
-  h3 { font-size: 1rem; font-weight: 600; letter-spacing: 0; }
+  h3 { font-size: 1.125rem; font-weight: 600; letter-spacing: 0; }
 
   p { margin: 0; text-wrap: pretty; }
 
@@ -125,14 +125,15 @@
     padding-block-start: clamp(48px, 7vw, 88px);
   }
 
-  @media (min-width: 860px) {
-    .hero { grid-template-columns: 1fr minmax(280px, 380px); }
+  @media (min-width: 940px) {
+    .hero { grid-template-columns: 1fr minmax(260px, 340px); }
   }
 
   h1 {
-    font-size: clamp(2.25rem, 5.4vw, 3.5rem);
+    font-size: clamp(2.75rem, 7vw, 5rem);
     font-weight: 700;
-    line-height: 1.05;
+    line-height: 1;
+    letter-spacing: -0.025em;
   }
 
   .role {
@@ -181,7 +182,7 @@
   .btn-ghost:hover { border-color: var(--accent); color: var(--accent-text); }
 
   .portrait {
-    width: min(100%, 380px);
+    width: min(100%, 340px);
     aspect-ratio: 1;
     height: auto;
     border-radius: 50%;
@@ -427,6 +428,7 @@
 
   @media (max-width: 759px) {
     h1 { letter-spacing: -0.015em; }
+    h2 { letter-spacing: -0.005em; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -475,10 +477,10 @@
     </div>
 
     <picture>
-      <source type="image/webp" srcset="assets/img/portret-640.webp 640w, assets/img/portret-1280.webp 1280w" sizes="(min-width: 860px) 380px, 100vw">
+      <source type="image/webp" srcset="assets/img/portret-640.webp 640w, assets/img/portret-1280.webp 1280w" sizes="(min-width: 940px) 340px, 100vw">
       <img class="portrait" src="assets/img/portret-640.jpg"
            srcset="assets/img/portret-640.jpg 640w, assets/img/portret-1280.jpg 1280w"
-           sizes="(min-width: 860px) 380px, 100vw"
+           sizes="(min-width: 940px) 340px, 100vw"
            width="640" height="640" fetchpriority="high"
            alt="Portrét Jakuba Bukáčka">
     </picture>
