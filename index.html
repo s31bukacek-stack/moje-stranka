@@ -339,11 +339,14 @@
 
   /* Klienti ------------------------------------------------------------- */
 
+  /* Mřížka log: čáry vznikají z 1px mezery, přes kterou prosvítá pozadí. */
   .clients {
     display: grid;
-    gap: 2px;
-    margin-top: clamp(32px, 4vw, 48px);
+    gap: 1px;
+    margin: clamp(32px, 4vw, 48px) 0 0;
+    padding: 0;
     grid-template-columns: repeat(2, 1fr);
+    background: var(--rule);
   }
 
   @media (min-width: 760px) { .clients { grid-template-columns: repeat(3, 1fr); } }
@@ -352,12 +355,17 @@
     list-style: none;
     display: grid;
     place-items: center;
-    padding: 28px 16px;
-    background: var(--tint);
-    font-weight: 600;
-    font-size: 1rem;
-    text-align: center;
-    letter-spacing: 0.005em;
+    min-height: 136px;
+    padding: 32px 24px;
+    background: var(--paper);
+  }
+
+  /* Loga v původních barvách. --h vyrovnává opticky rozdílné proporce. */
+  .clients img {
+    width: auto;
+    height: var(--h, 32px);
+    max-width: 100%;
+    object-fit: contain;
   }
 
   /* Kontakt ------------------------------------------------------------- */
@@ -669,12 +677,12 @@
     <h2>Vybrané značky, kterým jsem pomohl</h2>
 
     <ul class="clients">
-      <li>Yves Rocher</li>
-      <li>Xzone</li>
-      <li>Cool Mania</li>
-      <li>Skleněný shop</li>
-      <li>Sledování TV</li>
-      <li>Nutrend</li>
+      <li><img src="assets/img/clients/yves-rocher.svg" alt="Yves Rocher" width="136" height="29" style="--h: 32px" loading="lazy"></li>
+      <li><img src="assets/img/clients/xzone.png" alt="Xzone" width="480" height="129" style="--h: 34px" loading="lazy"></li>
+      <li><img src="assets/img/clients/cool-mania.svg" alt="Cool Mania" width="272" height="96" style="--h: 48px" loading="lazy"></li>
+      <li><img src="assets/img/clients/skleneny-shop.png" alt="Skleněný shop" width="613" height="66" style="--h: 22px" loading="lazy"></li>
+      <li><img src="assets/img/clients/sledovani-tv.svg" alt="Sledování TV" width="449" height="82" style="--h: 30px" loading="lazy"></li>
+      <li><img src="assets/img/clients/nutrend.svg" alt="Nutrend" width="176" height="44" style="--h: 32px" loading="lazy"></li>
     </ul>
   </section>
 
