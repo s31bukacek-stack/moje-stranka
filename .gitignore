@@ -3,3 +3,6 @@
 
 # Lokální konfigurace náhledu, na GitHub nepatří.
 .claude/
+
+# Předávací poznámky mezi sessions, obsahují interní údaje.
+HANDOFF.md
